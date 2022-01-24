@@ -9,12 +9,6 @@ export class ToDoApplication extends LitElement {
     this.tasks = [{ id: 1, task: 'Shopping', done: false }];
   }
 
-  /**
-   * Gets style.
-   *
-   * @returns {Array}
-   */
-
   static get styles() {
     return [
       css`
@@ -76,15 +70,15 @@ export class ToDoApplication extends LitElement {
    * @param {number}
    */
   deleteTask(id) {
-    let ind;
+    let pos;
 
     this.tasks.forEach((task, index) => {
       if (task.id === id) {
-        ind = index;
+        pos = index;
       }
     });
 
-    this.tasks = [...this.tasks.slice(0, ind), ...this.tasks.slice(ind + 1)];
+    this.tasks = [...this.tasks.slice(0, pos), ...this.tasks.slice(pos + 1)];
   }
 
   /**
@@ -93,11 +87,11 @@ export class ToDoApplication extends LitElement {
    * @param {number}
    */
   completeTask(id) {
-    let ind, doneTask;
+    let pos, doneTask;
 
     this.tasks.forEach((task, index) => {
       if (task.id === id) {
-        ind = index;
+        pos = index;
         doneTask = {
           ...task,
           ...{ done: !task.done },
@@ -106,9 +100,9 @@ export class ToDoApplication extends LitElement {
     });
 
     this.tasks = [
-      ...this.tasks.slice(0, ind),
+      ...this.tasks.slice(0, pos),
       doneTask,
-      ...this.tasks.slice(ind + 1),
+      ...this.tasks.slice(pos + 1),
     ];
   }
 
