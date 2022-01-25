@@ -10,6 +10,7 @@ export class ToDoList extends LitElement {
         background: aliceblue;
         border-radius: 5px;
       }
+
       h3 {
         padding: 5px;
         color: rgb(65, 63, 63);

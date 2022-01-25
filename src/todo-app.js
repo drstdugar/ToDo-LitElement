@@ -70,15 +70,7 @@ export class ToDoApplication extends LitElement {
    * @param {number}
    */
   deleteTask(id) {
-    let pos;
-
-    this.tasks.forEach((task, index) => {
-      if (task.id === id) {
-        pos = index;
-      }
-    });
-
-    this.tasks = [...this.tasks.slice(0, pos), ...this.tasks.slice(pos + 1)];
+    this.tasks = this.tasks.filter((task) => task.id != id);
   }
 
   /**
