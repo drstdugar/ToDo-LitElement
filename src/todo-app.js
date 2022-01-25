@@ -79,23 +79,12 @@ export class ToDoApplication extends LitElement {
    * @param {number}
    */
   completeTask(id) {
-    let pos, doneTask;
-
-    this.tasks.forEach((task, index) => {
-      if (task.id === id) {
-        pos = index;
-        doneTask = {
-          ...task,
-          ...{ done: !task.done },
-        };
+    this.tasks = this.tasks.map((task) => {
+      if (id !== task.id) {
+        return task;
       }
+      return { ...task, ...{ done: !task.done } };
     });
-
-    this.tasks = [
-      ...this.tasks.slice(0, pos),
-      doneTask,
-      ...this.tasks.slice(pos + 1),
-    ];
   }
 
   /**
