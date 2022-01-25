@@ -80,10 +80,10 @@ export class ToDoApplication extends LitElement {
    */
   completeTask(id) {
     this.tasks = this.tasks.map((task) => {
-      if (id !== task.id) {
-        return task;
+      if (id === task.id) {
+        return { ...task, ...{ done: !task.done } };
       }
-      return { ...task, ...{ done: !task.done } };
+      return task;
     });
   }
 
